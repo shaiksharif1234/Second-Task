@@ -1,0 +1,132 @@
+---
+permalink: /404.html
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      font-weight: bold;
+    }
+    body{
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgb(31, 184, 226);
+    }
+    .onetask{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 500px;
+    }
+    .twotask{
+      align-items: center;
+      justify-content: center;
+      width: 90%;
+      max-width: 400px;
+    }
+    .twotask h1{
+      text-align: center;
+      font-weight: bold;
+    }
+    form{
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    input,textarea{
+      padding: 10px;
+      font-size: 1em;
+      border-radius: 10px;
+      border:2px solid ;
+    }
+    textarea{
+      font-weight: bolder;
+      font-size: larger;
+    }
+    .Button{
+      border-radius: 10px;
+      padding: 10px;
+      font-size: larger;
+      color:rgb(204, 225, 247);
+      background-color: rgb(21, 86, 207);
+    }
+    button:hover{
+      cursor: pointer;
+      background-color: rgb(67, 161, 161);
+      color: rgb(28, 27, 24);
+      transform: translateY(3px);
+    }
+    .twotask{
+      background: 12px aqua ;
+      margin-bottom: 10px;
+      border-radius: 15px;
+      margin-top: 50px;
+      padding-bottom: 20px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    #todoList {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    #todoList li {
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+    #todoList li:last-child {
+      border-bottom: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="onetask">
+    <div class="twotask">
+      <h1>Contact Us</h1>
+      <form action="" id="Contact1">
+        <input type="text"name="username" placeholder="Your Name">
+        <input type="email"name="emailId" placeholder="Your Email" required>
+        <textarea name="Userinput" id="Id"placeholder="Your Message"cols="35"rows="5" required></textarea>
+        <button class="Button">Submit</button>
+      </form>
+    </div>
+    <div class="twotask">
+      <h1>To-Do-List</h1>
+      <form action="" id="Contact">
+        <input type="text" name="task" placeholder="Enter a task...." id="todoInput">
+        <button class="Button" id="addTodoButton">Add Task</button>
+        <ul id="todoList"></ul>
+      </form>
+    </div>
+  </div>
+  <script>
+    const todoInput = document.getElementById('todoInput');
+    const addTodoButton = document.getElementById('addTodoButton');
+    const todoList = document.getElementById('todoList');
+
+    addTodoButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      const taskText = todoInput.value.trim();
+      if (taskText) {
+        const task = document.createElement('li');
+        task.textContent = taskText;
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.style.float = 'right';
+        deleteButton.addEventListener('click', () => {
+          task.remove();
+        });
+        task.appendChild(deleteButton);
+        todoList.appendChild(task);
+        todoInput.value = '';
+      }
+    });
+  </script>
+</body>
+</html>
